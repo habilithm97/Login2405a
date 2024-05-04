@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Login2405a</string>
+    <string name="id">ID</string>
+    <string name="pw">PASSWORD</string>
+    <string name="login">LOGIN</string>
+    <string name="register">REGISTER</string>
 </resources>
