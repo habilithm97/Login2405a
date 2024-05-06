@@ -1,7 +1,16 @@
 <resources>
     <string name="app_name">Login2405a</string>
+
     <string name="id">ID</string>
     <string name="pw">PASSWORD</string>
     <string name="login">LOGIN</string>
     <string name="register">REGISTER</string>
+
+    <string name="edtId">6–15 English/number combination</string>
+    <string name="check">CHECK</string>
+    <string name="edtPw">8–15 English/number combination</string>
+    <string name="pw_check">CHECK THE PASSWORD</string>
+    <string name="nicname">NICNAME</string>
+    <string name="cell_phone">CELL PHONE</string>
+    <string name="edtCellPhone">Cell phone number excluding -</string>
 </resources>

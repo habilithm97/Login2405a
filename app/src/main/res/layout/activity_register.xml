@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main"
+    tools:context=".RegisterActivity">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/register"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:text="@string/id"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/edtId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="30dp"
+                android:hint="@string/edtId"
+                android:textColorHint="@color/hint"
+                android:paddingStart="10dp"
+                android:inputType="text"
+                android:textColor="@color/white"
+                android:ems="15"
+                android:backgroundTint="@color/white"/>
+
+            <Button
+                android:id="@+id/btnIdCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="top|end"
+                android:text="@string/check"
+                android:textColor="@color/main"
+                android:padding="1dp"
+                android:backgroundTint="@color/white"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:text="@string/pw"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/edtPw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="30dp"
+                android:hint="@string/edtPw"
+                android:textColorHint="@color/hint"
+                android:paddingStart="10dp"
+                android:inputType="text"
+                android:textColor="@color/white"
+                android:ems="15"
+                android:backgroundTint="@color/white"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:text="@string/pw_check"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/edtPwCheck"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="30dp"
+                android:paddingStart="10dp"
+                android:inputType="text"
+                android:textColor="@color/white"
+                android:ems="15"
+                android:backgroundTint="@color/white"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:text="@string/nicname"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/edtNicname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="30dp"
+                android:paddingStart="10dp"
+                android:inputType="text"
+                android:textColor="@color/white"
+                android:ems="10"
+                android:backgroundTint="@color/white"/>
+
+            <Button
+                android:id="@+id/btnNmCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="top|end"
+                android:text="@string/check"
+                android:textColor="@color/main"
+                android:padding="1dp"
+                android:backgroundTint="@color/white"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:text="@string/cell_phone"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/edtCellPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="30dp"
+                android:hint="@string/edtCellPhone"
+                android:textColorHint="@color/hint"
+                android:paddingStart="10dp"
+                android:inputType="text"
+                android:textColor="@color/white"
+                android:ems="11"
+                android:backgroundTint="@color/white"/>
+
+        </FrameLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/register"
+        android:textColor="@color/main"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/linear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

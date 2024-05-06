@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">로그인2405a</string>
+
     <string name="id">아이디</string>
     <string name="pw">비밀번호</string>
     <string name="login">로그인</string>
     <string name="register">회원가입</string>
+
+    <string name="edtId">6~15자의 영문/숫자 조합으로 입력</string>
+    <string name="check">중복확인</string>
+    <string name="edtPw">8~15자의 영문/숫자 조합으로 입력</string>
+    <string name="pw_check">비밀번호 확인</string>
+    <string name="nicname">닉네임</string>
+    <string name="cell_phone">휴대폰</string>
+    <string name="edtCellPhone">-를 제외한 휴대폰 번호</string>
 </resources>
