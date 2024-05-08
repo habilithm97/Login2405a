@@ -15,4 +15,8 @@
     <string name="edtNicname">한글로 입력</string>
     <string name="phone">휴대폰</string>
     <string name="edtPhone">-를 제외한 휴대폰 번호</string>
+
+    <string name="login_empty">아이디와 비밀번호를 모두 입력해 주세요.</string>
+    <string name="login_complete">로그인 되었습니다.</string>
+    <string name="login_fail">아이디와 비밀번호를 확인해 주세요.</string>
 </resources>
