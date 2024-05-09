@@ -11,6 +11,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var toast: Toast
     private val db by lazy { DBHelper(this@RegisterActivity) }
     private var _checkId: Boolean = false
+    private var _checkNick: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +45,28 @@ class RegisterActivity : AppCompatActivity() {
                         }
                     } else { // 사용 불가 id
                         shortToast(getString(R.string.id_unavailable))
+                    }
+                }
+            }
+            // 닉네임 중복 확인
+            btnNicCheck.setOnClickListener {
+                val nickname = edtNicname.text.toString()
+                val nickParttern = "^[ㄱ-ㅣ가-힣]*$"
+
+                if(nickname.isEmpty()) { // 입력x
+                    shortToast(getString(R.string.nic_check))
+                } else { // 입력o
+                    if(Pattern.matches(nickParttern, nickname)) { // 입력한 닉네임이 정규 표현식에 맞으면
+                        val checkNick = db.checkNick(nickname)
+
+                        if (!checkNick) { // 사용 가능 닉네임
+                            _checkNick = true
+                            shortToast(getString(R.string.nic_available))
+                        } else { // 이미 있는 닉네임
+                            shortToast(getString(R.string.nic_exist))
+                        }
+                    } else { // 사용 불가 닉네임
+                        shortToast(getString(R.string.nic_unavailable))
                     }
                 }
             }
