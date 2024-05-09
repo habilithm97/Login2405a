@@ -58,7 +58,7 @@
                 android:paddingStart="10dp"
                 android:inputType="text"
                 android:textColor="@color/white"
-                android:ems="15"
+                android:maxLength="15"
                 android:backgroundTint="@color/white"/>
 
             <Button
@@ -99,7 +99,7 @@
                 android:paddingStart="10dp"
                 android:inputType="textPassword"
                 android:textColor="@color/white"
-                android:ems="15"
+                android:maxLength="15"
                 android:backgroundTint="@color/white"/>
 
         </FrameLayout>
@@ -128,7 +128,7 @@
                 android:paddingStart="10dp"
                 android:inputType="textPassword"
                 android:textColor="@color/white"
-                android:ems="15"
+                android:maxLength="15"
                 android:backgroundTint="@color/white"/>
 
         </FrameLayout>
@@ -158,8 +158,9 @@
                 android:textColorHint="@color/hint"
                 android:paddingStart="10dp"
                 android:inputType="text"
+                android:privateImeOptions="defaultInputmode=korean"
                 android:textColor="@color/white"
-                android:ems="10"
+                android:maxLength="10"
                 android:backgroundTint="@color/white"/>
 
             <Button
@@ -198,9 +199,9 @@
                 android:hint="@string/edtPhone"
                 android:textColorHint="@color/hint"
                 android:paddingStart="10dp"
-                android:inputType="text"
+                android:inputType="number"
                 android:textColor="@color/white"
-                android:ems="11"
+                android:maxLength="11"
                 android:backgroundTint="@color/white"/>
 
         </FrameLayout>
