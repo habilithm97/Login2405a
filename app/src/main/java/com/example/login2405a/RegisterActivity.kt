@@ -1,5 +1,6 @@
 package com.example.login2405a
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -21,6 +22,8 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun init() {
+        toast = Toast.makeText(this@RegisterActivity, "", Toast.LENGTH_SHORT)
+
         binding.apply {
             // 아이디 중복 확인
             btnIdCheck.setOnClickListener {
@@ -32,7 +35,7 @@ class RegisterActivity : AppCompatActivity() {
                 val idPattern = "^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z[0-9]]{6,15}$"
 
                 if(id.isEmpty()) { // 입력x
-                    shortToast(getString(R.string.id_check))
+                    shortToast(getString(R.string.id_empty))
                 } else { // 입력o
                     if(Pattern.matches(idPattern, id)) { // 입력한 id가 정규 표현식 패턴에 맞으면
                         val checkId = db.checkId(id)
@@ -50,11 +53,11 @@ class RegisterActivity : AppCompatActivity() {
             }
             // 닉네임 중복 확인
             btnNicCheck.setOnClickListener {
-                val nickname = edtNicname.text.toString()
+                val nickname = edtNick.text.toString()
                 val nickParttern = "^[ㄱ-ㅣ가-힣]*$"
 
                 if(nickname.isEmpty()) { // 입력x
-                    shortToast(getString(R.string.nic_check))
+                    shortToast(getString(R.string.nic_empty))
                 } else { // 입력o
                     if(Pattern.matches(nickParttern, nickname)) { // 입력한 닉네임이 정규 표현식에 맞으면
                         val checkNick = db.checkNick(nickname)
@@ -67,6 +70,51 @@ class RegisterActivity : AppCompatActivity() {
                         }
                     } else { // 사용 불가 닉네임
                         shortToast(getString(R.string.nic_unavailable))
+                    }
+                }
+            }
+            // 완료 버튼 클릭 시
+            btnRegister.setOnClickListener {
+                val id = edtId.text.toString()
+                val pw = edtPw.text.toString()
+                val cfPw = edtCfPw.text.toString()
+                val nick = edtNick.text.toString()
+                val phone = edtPhone.text.toString()
+                val pwPattern = "^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z[0-9]]{8,15}$"
+                val phonePattern = "^(010|011|016|017|018|019)\\d{3,4}\\d{4}$"
+
+                // 입력x
+                if(id.isEmpty() || pw.isEmpty() || cfPw.isEmpty() || nick.isEmpty() || phone.isEmpty()) {
+                    shortToast(getString(R.string.register_empty))
+                } else { // 입력o
+                    if(_checkId) { // 아이디 중복 확인o
+                        if(Pattern.matches(pwPattern, pw)) { // 입력한 비밀번호가 패턴에 맞으면
+                            if(pw == cfPw) { // 비밀번호 확인o
+                                if(_checkNick) { // 닉네임 중복 확인o
+                                    if (Pattern.matches(phonePattern, phone)) { // 입력한 휴대폰 번호가 패턴에 맞으면
+                                        val insert = db.insert(id, pw, nick, phone)
+
+                                        if(insert) { // 가입 성공
+                                            shortToast(getString(R.string.register_success))
+                                            val intent = Intent(this@RegisterActivity, MainActivity::class.java)
+                                            startActivity(intent)
+                                        } else { // 가입 실패
+                                            shortToast(getString(R.string.register_fail))
+                                        }
+                                    } else { // 사용 불가 휴대폰 번호
+                                        shortToast(getString(R.string.phone_unavailable))
+                                    }
+                                } else { // 닉네임 중복 확인x
+                                    shortToast(getString(R.string.nick_check))
+                                }
+                            } else { // 비밀번호 확인x
+                                shortToast(getString(R.string.cfpw_fail))
+                            }
+                        } else { // 사용 불가 비밀번호
+                            shortToast(getString(R.string.pw_unavailable))
+                        }
+                    } else { // 아이디 중복 확인x
+                        shortToast(getString(R.string.id_check))
                     }
                 }
             }

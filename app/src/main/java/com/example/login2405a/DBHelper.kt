@@ -12,14 +12,14 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
         const val TB_NAME = "user"
         const val ID = "id"
         const val PW = "pw"
-        const val NICK = "nickname"
+        const val NICK = "nick"
         const val PHONE = "phone"
     }
     private val writableDB by lazy { this.writableDatabase }
     private val readableDB by lazy { this.readableDatabase }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        val sql = "create table $TB_NAME(" +
+        val sql = "create table if not exists $TB_NAME(" +
                 "$ID text primary key," +
                 "$PW text," +
                 "$NICK text," +
@@ -55,7 +55,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
     // id와 pw가 일치하는 사용자가 있는지 확인
     fun checkPw(id: String, pw: String) : Boolean {
         var user = true
-        val cursor = readableDB.rawQuery("Select * from $TB_NAME where id = ? and pw = ?", arrayOf(id, pw))
+        val cursor = readableDB.rawQuery("select * from $TB_NAME where id = ? and pw = ?", arrayOf(id, pw))
         if (cursor.count <= 0) user = false
         cursor.close()
         return user
