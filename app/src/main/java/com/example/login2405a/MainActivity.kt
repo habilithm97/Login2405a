@@ -30,8 +30,8 @@ class MainActivity : AppCompatActivity() {
                     shortToast(getString(R.string.login_empty))
                 } else { // 입력o
                     val checkPw = db.checkPw(id, pw)
-                    if(checkPw == true) { // 정보 일치
-                        shortToast(getString(R.string.login_complete))
+                    if(checkPw) { // 정보 일치
+                        shortToast(getString(R.string.login_success))
 
                         val intent = Intent(this@MainActivity, HomeActivity::class.java)
                         startActivity(intent)

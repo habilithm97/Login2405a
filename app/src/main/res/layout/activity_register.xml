@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_marginTop="30dp"
-                android:hint="@string/edtId"
+                android:hint="@string/id_hint"
                 android:textColorHint="@color/hint"
                 android:paddingStart="10dp"
                 android:inputType="text"
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_marginTop="30dp"
-                android:hint="@string/edtPw"
+                android:hint="@string/pw_hint"
                 android:textColorHint="@color/hint"
                 android:paddingStart="10dp"
                 android:inputType="textPassword"
@@ -115,7 +115,7 @@
                 android:layout_gravity="top|start"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="10dp"
-                android:text="@string/rePw"
+                android:text="@string/cfpw"
                 android:textColor="@color/white"
                 android:textSize="20sp"/>
 
@@ -144,7 +144,7 @@
                 android:layout_gravity="top|start"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="10dp"
-                android:text="@string/nicname"
+                android:text="@string/nick"
                 android:textColor="@color/white"
                 android:textSize="20sp"/>
 
@@ -154,7 +154,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_marginTop="30dp"
-                android:hint="@string/edtNicname"
+                android:hint="@string/nick_hint"
                 android:textColorHint="@color/hint"
                 android:paddingStart="10dp"
                 android:inputType="text"
@@ -171,37 +171,6 @@
                 android:text="@string/check"
                 android:textColor="@color/main"
                 android:padding="1dp"
-                android:backgroundTint="@color/white"/>
-
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top|start"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="10dp"
-                android:text="@string/phone"
-                android:textColor="@color/white"
-                android:textSize="20sp"/>
-
-            <EditText
-                android:id="@+id/edtPhone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginTop="30dp"
-                android:hint="@string/edtPhone"
-                android:textColorHint="@color/hint"
-                android:paddingStart="10dp"
-                android:inputType="number"
-                android:textColor="@color/white"
-                android:maxLength="11"
                 android:backgroundTint="@color/white"/>
 
         </FrameLayout>

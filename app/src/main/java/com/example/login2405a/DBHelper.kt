@@ -13,17 +13,12 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
         const val ID = "id"
         const val PW = "pw"
         const val NICK = "nick"
-        const val PHONE = "phone"
     }
     private val writableDB by lazy { this.writableDatabase }
     private val readableDB by lazy { this.readableDatabase }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        val sql = "create table if not exists $TB_NAME(" +
-                "$ID text primary key," +
-                "$PW text," +
-                "$NICK text," +
-                "$PHONE text)"
+        val sql = "create table if not exists $TB_NAME($ID text primary key, $PW text, $NICK text)"
         db?.execSQL(sql)
     }
 
@@ -32,39 +27,38 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
         db?.execSQL(sql)
     }
 
-    fun insert(id: String?, pw: String?, nick: String?, phone: String?): Boolean {
+    fun insert(id: String?, pw: String?, nick: String?): Boolean {
         val contentValues = ContentValues().apply {
             put("id", id)
             put("pw", pw)
             put("nick", nick)
-            put("phone", phone)
         }
         val user = writableDB.insert(TB_NAME, null, contentValues)
         writableDB.close()
-        return user != -1L // 삽입 성공 시 true
+        return user != -1L // 삽입 성공 시 true, 실패 시 false
     }
 
     fun checkId(id: String?): Boolean {
-        var user = true // 사용자 id가 이미 존재한다고 가정
+        var user = false
         val cursor = readableDB.rawQuery("select * from $TB_NAME where id =?", arrayOf(id))
-        if (cursor.count <= 0) user = false // 검색 결과가 없다면 false
+        if (cursor.count > 0) user = true
         cursor.close()
         return user
     }
 
     // id와 pw가 일치하는 사용자가 있는지 확인
     fun checkPw(id: String, pw: String) : Boolean {
-        var user = true
+        var user = false
         val cursor = readableDB.rawQuery("select * from $TB_NAME where id = ? and pw = ?", arrayOf(id, pw))
-        if (cursor.count <= 0) user = false
+        if (cursor.count > 0) user = true
         cursor.close()
         return user
     }
 
     fun checkNick(nick: String?): Boolean {
-        var user = true
+        var user = false
         val cursor = readableDB.rawQuery("select * from $TB_NAME where nick =?", arrayOf(nick))
-        if (cursor.count <= 0) user = false
+        if (cursor.count > 0) user = true
         cursor.close()
         return user
     }
