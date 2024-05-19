@@ -37,4 +37,5 @@
     
     <string name="user">닉네임(아이디) 님</string>
     <string name="ntmy">반갑습니다.</string>
+    <string name="logout">로그아웃</string>
 </resources>

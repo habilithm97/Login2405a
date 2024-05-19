@@ -23,29 +23,33 @@ class MainActivity : AppCompatActivity() {
 
         binding.apply {
             btnLogin.setOnClickListener {
-                val id = edtId.text.toString()
-                val pw = edtPw.text.toString()
-
-                if(id.isEmpty() || pw.isEmpty()) { // 입력x
-                    shortToast(getString(R.string.login_empty))
-                } else { // 입력o
-                    val checkPw = db.checkPw(id, pw)
-                    if(checkPw) { // 정보 일치
-                        shortToast(getString(R.string.login_success))
-
-                        val intent = Intent(this@MainActivity, HomeActivity::class.java)
-                        val nick = db.getNickById(id)
-                        intent.putExtra(DBHelper.ID, id)
-                        intent.putExtra(DBHelper.NICK, nick)
-                        startActivity(intent)
-                    } else { // 정보 불일치
-                        shortToast(getString(R.string.login_fail))
-                    }
-                }
+                login()
             }
             btnRegister.setOnClickListener {
                 val intent = Intent(this@MainActivity, RegisterActivity::class.java)
                 startActivity(intent)
+            }
+        }
+    }
+
+    private fun login() {
+        val id = binding.edtId.text.toString()
+        val pw = binding.edtPw.text.toString()
+
+        if(id.isEmpty() || pw.isEmpty()) { // 입력x
+            shortToast(getString(R.string.login_empty))
+        } else { // 입력o
+            val checkPw = db.checkPw(id, pw)
+            if(checkPw) { // 정보 일치
+                shortToast(getString(R.string.login_success))
+
+                val intent = Intent(this@MainActivity, HomeActivity::class.java)
+                val nick = db.getNickById(id)
+                intent.putExtra(DBHelper.ID, id)
+                intent.putExtra(DBHelper.NICK, nick)
+                startActivity(intent)
+            } else { // 정보 불일치
+                shortToast(getString(R.string.login_fail))
             }
         }
     }
