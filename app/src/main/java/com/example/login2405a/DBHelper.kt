@@ -29,18 +29,28 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
 
     fun insert(id: String?, pw: String?, nick: String?): Boolean {
         val contentValues = ContentValues().apply {
-            put("id", id)
-            put("pw", pw)
-            put("nick", nick)
+            put(ID, id)
+            put(PW, pw)
+            put(NICK, nick)
         }
         val user = writableDB.insert(TB_NAME, null, contentValues)
         writableDB.close()
         return user != -1L // 삽입 성공 시 true, 실패 시 false
     }
 
+    fun getNickById(id: String) : String? {
+        val cursor = readableDB.rawQuery("select $NICK from $TB_NAME where $ID = ?", arrayOf(id))
+        var nick: String? = null
+        if(cursor.moveToFirst()) {
+            nick = cursor.getString(cursor.getColumnIndexOrThrow(NICK))
+        }
+        cursor.close()
+        return nick
+    }
+
     fun checkId(id: String?): Boolean {
         var user = false
-        val cursor = readableDB.rawQuery("select * from $TB_NAME where id =?", arrayOf(id))
+        val cursor = readableDB.rawQuery("select $ID from $TB_NAME where id =?", arrayOf(id))
         if (cursor.count > 0) user = true
         cursor.close()
         return user
@@ -49,7 +59,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
     // id와 pw가 일치하는 사용자가 있는지 확인
     fun checkPw(id: String, pw: String) : Boolean {
         var user = false
-        val cursor = readableDB.rawQuery("select * from $TB_NAME where id = ? and pw = ?", arrayOf(id, pw))
+        val cursor = readableDB.rawQuery("select $ID, $PW from $TB_NAME where id = ? and pw = ?", arrayOf(id, pw))
         if (cursor.count > 0) user = true
         cursor.close()
         return user
@@ -57,7 +67,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_V
 
     fun checkNick(nick: String?): Boolean {
         var user = false
-        val cursor = readableDB.rawQuery("select * from $TB_NAME where nick =?", arrayOf(nick))
+        val cursor = readableDB.rawQuery("select $NICK from $TB_NAME where nick =?", arrayOf(nick))
         if (cursor.count > 0) user = true
         cursor.close()
         return user

@@ -10,5 +10,14 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        init()
+    }
+
+    private fun init() {
+        val id = intent.getStringExtra(DBHelper.ID)
+        val nick = intent.getStringExtra(DBHelper.NICK)
+
+        binding.tvUser.text = "$nick($id) 님"
     }
 }

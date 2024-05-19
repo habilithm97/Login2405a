@@ -34,6 +34,9 @@ class MainActivity : AppCompatActivity() {
                         shortToast(getString(R.string.login_success))
 
                         val intent = Intent(this@MainActivity, HomeActivity::class.java)
+                        val nick = db.getNickById(id)
+                        intent.putExtra(DBHelper.ID, id)
+                        intent.putExtra(DBHelper.NICK, nick)
                         startActivity(intent)
                     } else { // 정보 불일치
                         shortToast(getString(R.string.login_fail))
